@@ -11,8 +11,6 @@ How has military spending by European NATO members changed since 2014, and how c
 - **The United Kingdom** stayed close to 2% for most of the period and reached around 2.4% in 2024–25.
 - Most European NATO members were below the 2% guideline in 2014. By 2025, most are at or above it, but only a few are near 3.5%.
 
-*[Check these figures against your own output before publishing, and add any other patterns you noticed.]*
-
 ## Data
 
 - **Source:** [SIPRI Military Expenditure Database](https://www.sipri.org/databases/milex), 2026 release (file `SIPRI-Milex-data-1949-2025_v1.2.xlsx`, downloaded [DD Month 2026]).
