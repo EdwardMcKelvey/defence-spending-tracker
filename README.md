@@ -13,7 +13,7 @@ How has military spending by European NATO members changed since 2014, and how c
 
 ## Data
 
-- **Source:** [SIPRI Military Expenditure Database](https://www.sipri.org/databases/milex), 2026 release (file `SIPRI-Milex-data-1949-2025_v1.2.xlsx`, downloaded [DD Month 2026]).
+- **Source:** [SIPRI Military Expenditure Database](https://www.sipri.org/databases/milex), 2026 release (file `SIPRI-Milex-data-1949-2025_v1.2.xlsx`, downloaded [28 September 2026]).
 - **Measure:** military expenditure as a share of GDP ("Share of GDP" sheet).
 - **Countries:** the 29 European NATO members with armed forces. Iceland is excluded because it has no armed forces, so SIPRI records its spending as zero.
 - **Licence:** SIPRI data is free for non-commercial use with attribution. The raw file is not included in this repo; see *How to run* below.
