@@ -64,4 +64,4 @@ defence-spending-tracker/
 
 ---
 
-*Personal project using publicly available data. Views are my own.*
+*Personal project using publicly available data.*
