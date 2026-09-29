@@ -1,0 +1,66 @@
+---
+title: "European NATO Military Spending, 2014–2025"
+author: "Edward McKelvey"
+date: today
+format:
+  html:
+    embed-resources: true
+    toc: true
+    code-fold: true
+execute:
+  echo: false
+  warning: false
+  message: false
+---
+
+```{r setup}
+library(tidyverse)
+library(readxl)
+source("R/sipri_functions.R")
+
+sipri_gdp <- find_sipri_file() |>
+  read_sipri() |>
+  clean_sipri()
+
+plot_data <- filter_countries(sipri_gdp)
+
+# Values used in the text below
+latest    <- max(plot_data$year)
+val       <- function(ctry, yr) plot_data |> filter(country == ctry, year == yr) |> pull(share_gdp) |> round(1)
+n_total   <- plot_data |> filter(year == latest) |> nrow()
+n_2pc_now <- plot_data |> filter(year == latest, share_gdp >= 2) |> nrow()
+n_2pc_14  <- plot_data |> filter(year == 2014,   share_gdp >= 2) |> nrow()
+```
+
+## Summary
+
+In `r latest`, **`r n_2pc_now` of `r n_total`** European NATO members spent at least 2% of GDP on their militaries, up from `r n_2pc_14` in 2014. Poland stands out, reaching `r val("Poland", latest)`% of GDP, well above NATO's new 3.5% core target. Germany has roughly doubled its share since 2014, to `r val("Germany", latest)`%, while the UK is at `r val("United Kingdom", latest)`%.
+
+## Spending since 2014
+
+```{r chart}
+#| fig-width: 9
+#| fig-height: 5.5
+plot_share_gdp(plot_data)
+```
+
+## Selected countries
+
+```{r table}
+plot_data |>
+  filter(country %in% c("Poland", "Germany", "United Kingdom"),
+         year %in% c(2014, 2022, latest)) |>
+  select(country, year, share_gdp) |>
+  pivot_wider(names_from = year, values_from = share_gdp) |>
+  mutate(`Change since 2014 (pp)` = .data[[as.character(latest)]] - `2014`) |>
+  rename(Country = country) |>
+  knitr::kable(digits = 1, caption = "Military expenditure, % of GDP")
+```
+
+## Data and method
+
+Data come from the [SIPRI Military Expenditure Database](https://www.sipri.org/databases/milex) (2026 release). The analysis covers the 29 European NATO members with armed forces; Iceland is excluded because it has none. SIPRI and NATO define military spending differently, so these figures will not always match NATO's official estimates.
+
+All figures in this report are generated from code. See the [project README](README.md) for how to reproduce it.
+
+*Personal project using publicly available data.*

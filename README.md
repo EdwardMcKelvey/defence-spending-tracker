@@ -41,7 +41,10 @@ Requires R (4.3 or later) and RStudio or Positron.
 ```
 3. Download the SIPRI Excel file from the link above and save it in `data/raw/`.
 4. Run `R/01_sipri_chart.R`. The chart is saved to `outputs/`.
-
+5. Run the tests:
+```r
+   testthat::test_dir("tests/testthat")
+```
 ## Project structure
 
 ```
