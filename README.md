@@ -34,7 +34,7 @@ GDP more** than the other 23 members after 2022 (standard error 0.13).
 These results are descriptive. They show that spending diverged by distance from Russia, not that
 proximity alone caused it.
 
-### Method
+### Estimation method
 
 1. Computed the great-circle distance from each capital to Moscow (`geosphere::distHaversine`,
    capital coordinates from the `maps` package).
@@ -52,7 +52,7 @@ proximity alone caused it.
 - **Countries:** the 29 European NATO members with armed forces. Iceland is excluded because it has no armed forces, so SIPRI records its spending as zero.
 - **Licence:** SIPRI data is free for non-commercial use with attribution. The raw file is not included in this repo; see *How to run* below.
 
-## Method
+## Data preparation
 
 1. Read the "Share of GDP" sheet, detecting the header row automatically.
 2. Reshaped the data from wide (one column per year) to long format: country, year, share of GDP.
