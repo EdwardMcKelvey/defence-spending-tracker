@@ -91,4 +91,3 @@ plot_share_gdp <- function(data,
           panel.grid.minor = element_blank(),
           plot.title = element_text(face = "bold"))
 }
-
