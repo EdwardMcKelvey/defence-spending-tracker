@@ -134,3 +134,14 @@ add_distance_moscow <- function(data) {
     )) |>
     left_join(capital_distances(), by = "iso3c")
 }
+
+# Build the analysis panel: distance to Moscow plus treatment indicators
+build_proximity_panel <- function(data, cutoff_km = 1300, post_from = 2022) {
+  data |>
+    add_distance_moscow() |>
+    mutate(
+      near_russia = as.integer(dist_moscow_km < cutoff_km),
+      post        = as.integer(year >= post_from),
+      treated     = near_russia * post
+    )
+}

@@ -84,3 +84,15 @@ test_that("add_distance_moscow returns sensible distances in km", {
   expect_gt(lt, 700)
   expect_lt(lt, 900)
 })
+
+test_that("build_proximity_panel codes near_russia, post and treated correctly", {
+  fake_panel <- tibble(
+    country   = rep(c("Lithuania", "United Kingdom"), each = 2),
+    year      = rep(c(2021L, 2022L), times = 2),
+    share_gdp = 2
+  )
+  out <- build_proximity_panel(fake_panel)
+  expect_equal(out$near_russia, c(1L, 1L, 0L, 0L))
+  expect_equal(out$post,        c(0L, 1L, 0L, 1L))
+  expect_equal(out$treated,     c(0L, 1L, 0L, 0L))
+})
