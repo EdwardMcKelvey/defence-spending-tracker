@@ -40,7 +40,10 @@ Requires R (4.3 or later) and RStudio or Positron.
    renv::restore()
 ```
 3. Download the SIPRI Excel file from the link above and save it in `data/raw/`.
-4. Run `R/01_sipri_chart.R`. The chart is saved to `outputs/`.
+4. Rebuild everything (tests, chart and report) with one command:
+```r
+   source("run.R")
+```
 5. Run the tests:
 ```r
    testthat::test_dir("tests/testthat")
@@ -53,6 +56,7 @@ defence-spending-tracker/
 │   └── 01_sipri_chart.R     # read, clean, reshape and chart the data
 ├── data/raw/                # SIPRI file goes here (not tracked by Git)
 ├── outputs/                 # saved charts
+├── run.R                    # runs tests, chart and report in one go
 ├── renv.lock                # package versions
 └── README.md
 ```

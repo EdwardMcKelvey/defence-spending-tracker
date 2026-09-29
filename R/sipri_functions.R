@@ -22,7 +22,10 @@ read_sipri <- function(path, sheet_pattern = "share of gdp") {
   sheet <- str_subset(excel_sheets(path), regex(sheet_pattern, ignore_case = TRUE))[1]
   if (is.na(sheet)) stop("No sheet matching '", sheet_pattern, "' in ", path)
 
-  raw        <- read_excel(path, sheet = sheet, col_names = FALSE, col_types = "text")
+  raw        <-   raw <- read_excel(path,
+                                    sheet = sheet, col_names = FALSE, col_types = "text",
+                                    .name_repair = "unique_quiet"
+  )
   header_row <- which(raw[[1]] == "Country")[1]
   if (is.na(header_row)) stop("Could not find a 'Country' header row in sheet ", sheet)
 
